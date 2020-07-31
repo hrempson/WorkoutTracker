@@ -38,16 +38,34 @@ router.put("/api/workouts/:id", (req, res) => {
 });
 
 
-// router.post("/api/workouts", (req, res) => {
-//     Workout.getWorkoutsInRange(req.body)
-//     .then(dbWorkouts => {
-//         res.json(dbWorkouts)
-//     })
-//     .catch (err => {
-//         res.status(401).json(err);
-//     });
+router.get("/api/workouts/range", (req, res) => {
+    
+    // Look for workouts 7 days ago
+    var week = new Date();
+    week.setDate(week.getDate() - 7);
+    Workout.find({ day: { $gte: week} })
+    .then(dbWorkouts => {
+        res.json(dbWorkouts);
+    })
+    .catch( err => {
+        res.status(401).json(err);
+    });
+})
 
-// })
-// need getWorkoutsInRange route
-// POST route for createWorkout
+router.get("/api/workouts/within/:days", (req, res) => {
+    
+    // Look for workouts X days ago
+    var d = new Date();
+    d.setDate(d.getDate() - req.params.days);
+    d.setHours(0,0,0,0);
+
+    Workout.find({ day: { $gt: d} })
+    .then(dbWorkouts => {
+        res.json(dbWorkouts);
+    })
+    .catch( err => {
+        res.status(401).json(err);
+    });
+})
+
 module.exports = router;
