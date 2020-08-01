@@ -2,7 +2,7 @@ const router = require("express").Router();
 const path = require("path");
 
 // router.get("/"), function
-router.get("*", (req,res) => {
+router.get("/", (req,res) => {
   res.redirect("/exercise");
 });
 
