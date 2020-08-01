@@ -1,4 +1,4 @@
 module.exports = [
-    require("./WorkoutController"),
+    require("./workoutController"),
     require("./htmlRoutes")
 ]
