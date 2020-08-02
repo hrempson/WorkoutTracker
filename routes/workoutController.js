@@ -50,7 +50,7 @@ router.get("/api/workouts/range", (req, res) => {
     .catch( err => {
         res.status(401).json(err);
     });
-})
+});
 
 router.get("/api/workouts/within/:days", (req, res) => {
     
