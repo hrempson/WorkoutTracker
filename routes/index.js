@@ -1,4 +1,5 @@
 module.exports = [
-    require("./workoutController"),
-    require("./htmlRoutes")
+    require("./workoutController.js"),
+    require("./htmlRoutes.js")
 ]
+ 
