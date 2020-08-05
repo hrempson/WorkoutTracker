@@ -37,13 +37,12 @@ router.put("/api/workouts/:id", (req, res) => {
     });
 });
 
-
 router.get("/api/workouts/range", (req, res) => {
-    
+
     // Look for workouts 7 days ago
     var week = new Date();
     week.setDate(week.getDate() - 7);
-    Workout.find({ day: { $gte: week} })
+    Workout.find({ })
     .then(dbWorkouts => {
         res.json(dbWorkouts);
     })
